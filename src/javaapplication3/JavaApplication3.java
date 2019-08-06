@@ -16,8 +16,7 @@ public class JavaApplication3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Cpu u = new Cpu();
-        u.Ciclo();
+        
         
     }
     

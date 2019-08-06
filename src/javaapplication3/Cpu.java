@@ -39,7 +39,7 @@ public class Cpu {
     public void Ciclo(){
         while(!Memoria.getInst(ri.getValor()).contains("HALT"))
         ri.setValor(ci.getValor());
-        ci.addReg();//self explainatory
+        ci.addReg();//self explanatory
         fullOp = Memoria.getInst(ri.getValor());
         procOp = ula.getOps(fullOp);// faz o parse das operacoes
         String[] operands = {procOp[1],procOp[2]};// pega os operandos
@@ -49,12 +49,26 @@ public class Cpu {
                 operands[i] = operands[i].replace("R", "");
                 vals[i] = bancoReg.get(getInt(operands[i])).getValor();
                 //TODO, vai chamar uma funcao da ula pra guardar o valor de um reg pro otro
+                
             }
             if(operands[i].contains("#")){
                 operands[i] = operands[i].replace("#", "");
                 vals[i] = getInt(operands[i]);
                 //TODO tbm
             }
+            if(operands[i].contains("0x")){
+                operands[i] = operands[i].replace("0x", "");
+                vals[i] = getInt(Memoria.getInst(getInt(operands[i])));
+                //TODO tbm
+            }
+            //func prototype retornando um int
+            if(procOp[1].contains("R")){
+                bancoReg.get(getInt(operands[0])).setValor(/*return da func*/2);
+            }
+            if(procOp[1].contains("0x")){
+                Memoria.setInst(getInt(operands[0]),"as"/*return da func*/);
+            }
+            
         }
         
         
