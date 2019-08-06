@@ -21,4 +21,10 @@ public class Memoria {
     public static void setInst(int addr, String instr){
         instruções.set(addr, instr);
     }
+    public static void addInst(String instr){
+        instruções.add(instr);
+    }
+    public static ArrayList<String> returnTrecotodo(){
+        return instruções;
+    }
 }

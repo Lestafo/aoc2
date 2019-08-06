@@ -18,6 +18,8 @@ public class Cpu {
     ArrayList<Registrador> bancoReg = new ArrayList();
     String[] procOp;
     int[] vals = new int[2];
+    Registrador ci = new Registrador(1);
+    Registrador ri = new Registrador(0);
 
     public Cpu() {
         for(int i =0;i<NUMERO_REG;i++){
@@ -35,6 +37,10 @@ public class Cpu {
 //        }
 //    }
     public void Ciclo(){
+        while(!Memoria.getInst(ri.getValor()).contains("HALT"))
+        ri.setValor(ci.getValor());
+        ci.addReg();
+        fullOp = Memoria.getInst(ri.getValor());
         procOp = ula.getOps(fullOp);
         String[] operands = {procOp[1],procOp[2]};
         // escrever codigo pra pegar da memoria, pegar constante ou registrador
@@ -48,7 +54,8 @@ public class Cpu {
                 vals[i] = getInt(operands[i]);
             }
         }
-        System.out.println(vals[0] + vals[1]);
+        
+        
                
     }
     public int getInt(String num){
@@ -57,5 +64,7 @@ public class Cpu {
     public void addReg(Registrador a){
         bancoReg.add(a);
     }
-    
+    public int getReg(int a){
+        return bancoReg.get(a).getValor();
+    }
 }

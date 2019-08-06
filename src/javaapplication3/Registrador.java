@@ -27,5 +27,8 @@ public class Registrador {
     public void setValor(int valor) {
         this.valor = valor;
     }
+    public void addReg(){
+        this.valor++;
+    }
     
 }
