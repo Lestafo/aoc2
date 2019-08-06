@@ -22,5 +22,17 @@ public class Ula {
         ops = a.split(" ");
         return ops;
     }
+    public int solv(String op,int val1,int val2){
+        if(op.contains("ADD")){
+            val1 = val1+val2;
+        }
+        if (op.contains("MOV")){
+            val1 = val2;
+        }
+        if (op.contains("SUB")){
+            val1 -= val2;
+        }
+        return val1;
+    }
     
 }

@@ -10,7 +10,7 @@ package javaapplication3;
  * @author Lestaf
  */
 public class NewJFrame extends javax.swing.JFrame {
-
+    Cpu cpu = new Cpu();
     /**
      * Creates new form NewJFrame
      */
@@ -162,6 +162,7 @@ public class NewJFrame extends javax.swing.JFrame {
             Memoria.addInst(arr[i]);//insere as inst na memoria
         }
         MemLista.setListData(arr);
+        cpu.Ciclo();
     }//GEN-LAST:event_ButaoActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
