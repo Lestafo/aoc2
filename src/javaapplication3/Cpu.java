@@ -43,6 +43,7 @@ public class Cpu {
             ci.addReg();//self explanatory
             fullOp = Memoria.getInst(ri.getValor());
             procOp = ula.getOps(fullOp);// faz o parse das operacoes
+            
             String[] operands = {procOp[1],procOp[2]};// pega os operandos
             // escrever codigo pra pegar da memoria, pegar constante ou registrador
             for(int i = 0;i<operands.length;i++){
@@ -74,11 +75,16 @@ public class Cpu {
             
         }
         System.out.println(bancoReg.get(1).getValor());
+        resetCi();
+        System.out.println(ci.getValor());
     }
         
         
                
-    
+    public void resetCi(){
+        ci.setValor(0);
+        ri.setValor(0);
+    }
     public int getInt(String num){
         return  Integer.parseInt(num);//pra facilitar minha vida
     }
