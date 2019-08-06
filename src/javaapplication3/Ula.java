@@ -8,12 +8,14 @@ package javaapplication3;
 /**
  *
  * @author Lest
+ * 
+ * TODO: criar as functions de soma mov, etc...
  */
 public class Ula {
     private String op;
     
     
-    public String[] getOps(String a){
+    public String[] getOps(String a){ // só o parser por enquanto
         a = a.replace(",", "");
         String[] ops = new String[3];
         a = a.toUpperCase();

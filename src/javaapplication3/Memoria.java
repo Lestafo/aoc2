@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Lest
  */
 public class Memoria {
-    private static ArrayList<String> instruções = new ArrayList();
+    private static ArrayList<String> instruções = new ArrayList(); //static pra acessar de tudo
     
     
     public static String getInst(int address){

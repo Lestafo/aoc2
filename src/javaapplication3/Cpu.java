@@ -39,19 +39,21 @@ public class Cpu {
     public void Ciclo(){
         while(!Memoria.getInst(ri.getValor()).contains("HALT"))
         ri.setValor(ci.getValor());
-        ci.addReg();
+        ci.addReg();//self explainatory
         fullOp = Memoria.getInst(ri.getValor());
-        procOp = ula.getOps(fullOp);
-        String[] operands = {procOp[1],procOp[2]};
+        procOp = ula.getOps(fullOp);// faz o parse das operacoes
+        String[] operands = {procOp[1],procOp[2]};// pega os operandos
         // escrever codigo pra pegar da memoria, pegar constante ou registrador
         for(int i = 0;i<operands.length;i++){
             if(operands[i].contains("R")){
                 operands[i] = operands[i].replace("R", "");
                 vals[i] = bancoReg.get(getInt(operands[i])).getValor();
+                //TODO, vai chamar uma funcao da ula pra guardar o valor de um reg pro otro
             }
             if(operands[i].contains("#")){
                 operands[i] = operands[i].replace("#", "");
                 vals[i] = getInt(operands[i]);
+                //TODO tbm
             }
         }
         
@@ -59,12 +61,12 @@ public class Cpu {
                
     }
     public int getInt(String num){
-        return  Integer.parseInt(num);
+        return  Integer.parseInt(num);//pra facilitar minha vida
     }
-    public void addReg(Registrador a){
+    public void addReg(Registrador a){//inutil
         bancoReg.add(a);
     }
-    public int getReg(int a){
+    public int getReg(int a){//óbvio
         return bancoReg.get(a).getValor();
     }
 }

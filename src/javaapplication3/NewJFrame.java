@@ -159,7 +159,7 @@ public class NewJFrame extends javax.swing.JFrame {
         String input = Testosa.getText();
         String[] arr = input.split("\n");
         for(int i =0;i<arr.length;i++){
-            Memoria.addInst(arr[i]);
+            Memoria.addInst(arr[i]);//insere as inst na memoria
         }
         MemLista.setListData(arr);
     }//GEN-LAST:event_ButaoActionPerformed

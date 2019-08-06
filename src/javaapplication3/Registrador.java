@@ -9,7 +9,7 @@ package javaapplication3;
  *
  * @author Lest
  */
-public class Registrador {
+public class Registrador {//obviamente um registrador
     int valor;
 
     public Registrador() {
