@@ -10,5 +10,22 @@ package javaapplication3;
  * @author Lest
  */
 public class Registrador {
+    int valor;
+
+    public Registrador() {
+        this.valor=0;
+    }
+    
+    public Registrador(int valor) {
+        this.valor = valor;
+    }
+
+    public int getValor() {
+        return valor;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
     
 }

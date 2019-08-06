@@ -16,6 +16,7 @@ public class Ula {
     public String[] getOps(String a){
         a = a.replace(",", "");
         String[] ops = new String[3];
+        a = a.toUpperCase();
         ops = a.split(" ");
         return ops;
     }
