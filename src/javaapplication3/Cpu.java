@@ -57,8 +57,8 @@ public class Cpu {
                     vals[i] = getInt(operands[i]);
                     //TODO tbm
                 }
-                if(operands[i].contains("0x")){
-                    operands[i] = operands[i].replace("0x", "");
+                if(operands[i].contains("0X")){
+                    operands[i] = operands[i].replace("0X", "");
                     vals[i] = getInt(Memoria.getInst(getInt(operands[i])));
                     //TODO tbm
                 }
