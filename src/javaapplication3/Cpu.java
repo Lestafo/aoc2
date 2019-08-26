@@ -20,6 +20,7 @@ public class Cpu {
     int[] vals = new int[2];
     Registrador ci = new Registrador(0);
     Registrador ri = new Registrador(0);
+    Sreg sreg = new Sreg();
     int res;
     
     public Cpu() {
@@ -44,7 +45,8 @@ public class Cpu {
             fullOp = Memoria.getInst(ri.getValor());
             procOp = ula.getOps(fullOp);// faz o parse das operacoes
             
-            String[] operands = {procOp[1],procOp[2]};// pega os operandos
+            if(procOp.length == 3){
+                String[] operands = {procOp[1],procOp[2]};// pega os operandos
             // escrever codigo pra pegar da memoria, pegar constante ou registrador
             for(int i = 0;i<operands.length;i++){
                 if(operands[i].contains("R")){
@@ -65,6 +67,16 @@ public class Cpu {
                 }
             }
             res = ula.solv(procOp[0],vals[0], vals[1]);
+                if(res == 0){
+                   sreg.setZero(true);
+                }else{
+                   sreg.setZero(false);
+                }
+                if(res < 0){
+                    sreg.setNeg(true);
+                }else{
+                   sreg.setNeg(false);
+                }
             
             if(procOp[1].contains("R")){
                 bancoReg.get(getInt(operands[0])).setValor(res);
@@ -72,11 +84,46 @@ public class Cpu {
             if(procOp[1].contains("0x")){
                 Memoria.setInst(getInt(operands[0]),Integer.toString(res));
             }
+            }if(procOp.length == 2){
+                
+                String operands = procOp[1];
+                
+                //int a = bancoReg.get(getInt(operands)).getValor();
+                //System.out.println(a);
+                if(procOp[0].equals("INC")){
+                    operands = operands.replace("R", "");                  
+                    bancoReg.get(getInt(operands)).addReg();
+                    //System.out.println(bancoReg.get(getInt()));    
+                        
+                } else if(procOp[0].equals("JUMP")){
+                    if(procOp[1].contains("0X")){
+                        operands = operands.replace("0X", "");
+                        System.out.println(operands);
+                        ci.setValor(getInt(operands));
+                        
+                        
+                    }
+                }
+                
+                if(procOp[0].equals("SBRS")){
+                    if(procOp[1].contains("1")){
+                        if (sreg.isNeg())
+                            ci.addReg();
+                    }
+                        else if(procOp[1].contains("0")){
+                            if (sreg.isZero())
+                                ci.addReg();
+
+                        }
+                            
+            }
             
         }
         System.out.println(bancoReg.get(1).getValor());
         resetCi();
         System.out.println(ci.getValor());
+        
+        }
     }
         
         

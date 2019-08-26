@@ -24,7 +24,7 @@ public class Ula {
     }
     public int solv(String op,int val1,int val2){
         if(op.contains("ADD")){
-            val1 = val1+val2;
+            val1 = val1+val2;        
         }
         if (op.contains("MOV")){
             val1 = val2;
@@ -32,7 +32,14 @@ public class Ula {
         if (op.contains("SUB")){
             val1 -= val2;
         }
+        
         return val1;
     }
     
+    public int solv(String op,int val1){
+        if(op.contains("INC")){
+            val1++;
+        }
+        return val1;
+    }
 }
