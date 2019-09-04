@@ -18,8 +18,8 @@ public class Cpu {
     ArrayList<Registrador> bancoReg = new ArrayList();
     String[] procOp;
     int[] vals = new int[2];
-    Registrador ci = new Registrador(0);
-    Registrador ri = new Registrador(0);
+    FI fi = new FI();
+    DI di = new DI();
     Sreg sreg = new Sreg();
     int res;
     
@@ -29,21 +29,15 @@ public class Cpu {
         }
     }
     
-//    public void ul(){
-//        procOp = ula.getOps(fullOp);
-//        for(String op:procOp){
-//            if(op.contains("R")){
-//                op = op.replace("R", "");
-//            }
-//            System.out.println(op);
-//        }
-//    }
+    public void FI(){
+        
+    }
+
     public void Ciclo(){
-        while(!Memoria.getInst(ci.getValor()).contains("HALT")){
-            ri.setValor(ci.getValor());
-            ci.addReg();//self explanatory
-            fullOp = Memoria.getInst(ri.getValor());
-            procOp = ula.getOps(fullOp);// faz o parse das operacoes
+        //while(!Memoria.getInst(ci.getValor()).contains("HALT")){
+            
+            fullOp = fi.exec();
+            procOp = di.exec(fullOp);// faz o parse das operacoes
             
             if(procOp.length == 3){
                 String[] operands = {procOp[1],procOp[2]};// pega os operandos
@@ -128,10 +122,7 @@ public class Cpu {
         
         
                
-    public void resetCi(){
-        ci.setValor(0);
-        ri.setValor(0);
-    }
+
     public int getInt(String num){
         return  Integer.parseInt(num);//pra facilitar minha vida
     }
