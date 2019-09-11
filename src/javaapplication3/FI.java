@@ -10,8 +10,8 @@ package javaapplication3;
  * @author Administrador
  */
 public class FI {
-    Registrador ci = new Registrador(0);
-    Registrador ri = new Registrador(0);
+    public static Registrador ci = new Registrador(0);
+    public static Registrador ri = new Registrador(0);
 
     public Registrador getCi() {
         return ci;

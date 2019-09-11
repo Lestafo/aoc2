@@ -40,6 +40,9 @@ public class Ula {
         if(op.contains("INC")){
             val1++;
         }
+        if(op.contains("DEC")){
+            val1--;
+        }
         return val1;
     }
 }

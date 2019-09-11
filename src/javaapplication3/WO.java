@@ -5,10 +5,27 @@
  */
 package javaapplication3;
 
+import static javaapplication3.BancoReg.bancoReg;
+
 /**
  *
  * @author Administrador
  */
 public class WO {
-    
+    public boolean exec(String[] procop, int res){
+        if(procop[1].contains("R")){
+            procop[1] = procop[1].replace("R", "");
+            bancoReg.get(getInt(procop[1])).setValor(res);
+            return true;
+        }     
+        if(procop[1].contains("0X")){
+            procop[1] = procop[1].replace("0X", "");
+            Memoria.setInst(getInt(procop[1]),String.valueOf(res));
+            return true;
+        }
+        return false;
+    }
+    public int getInt(String num){
+        return  Integer.parseInt(num);//pra facilitar minha vida
+    }
 }
