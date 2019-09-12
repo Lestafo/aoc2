@@ -13,21 +13,21 @@ import static javaapplication3.BancoReg.bancoReg;
  */
 public class COBO {
     public int[] exec(String[] a){
-        int vals[] = new int[a.length];
+        int vals[] = new int[a.length-1];
         for(int i = 1;i<a.length;i++){
                 if(a[i].contains("R")){
                     a[i] = a[i].replace("R", "");
-                    vals[i] = bancoReg.get(getInt(a[i])).getValor();
+                    vals[i-1] = bancoReg.get(getInt(a[i])).getValor();
                     
                 }
                 if(a[i].contains("#")){
                     a[i] = a[i].replace("#", "");
-                    vals[i] = getInt(a[i]);
+                    vals[i-1] = getInt(a[i]);
                     
                 }
                 if(a[i].contains("0X")){
                     a[i] = a[i].replace("0X", "");
-                    vals[i] = getInt(Memoria.getInst(getInt(a[i])));
+                    vals[i-1] = getInt(Memoria.getInst(getInt(a[i])));
                     
                 }
             }

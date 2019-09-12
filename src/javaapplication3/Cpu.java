@@ -23,6 +23,7 @@ public class Cpu {
     COBO cobo = new COBO();
     EI ei = new EI();
     WO wo = new WO();
+    String[] AAA;
     static Sreg sreg = new Sreg();
     int res;
     
@@ -33,14 +34,18 @@ public class Cpu {
 
 
     public void Ciclo(){
-        //while(!Memoria.getInst(ci.getValor()).contains("HALT")){
+        while(!Memoria.getInst(FI.ci.getValor()).contains("HALT")){
             
             fullOp = fi.exec();
             procOp = di.exec(fullOp);// faz o parse das operacoes
             instruct = procOp[0];
             vals = cobo.exec(procOp);
+            //System.out.println("O VALS É" + vals[0] + " " + vals[1]);
             res = ei.exec(instruct, vals);
-            wo.exec(procOp, res);
+            //System.out.println("E o RES: "+res);
+            AAA = di.exec(fullOp);
+            wo.exec(AAA, res);
+        }
             /*if(res == 0){
                 sreg.setZero(true);
             }else{

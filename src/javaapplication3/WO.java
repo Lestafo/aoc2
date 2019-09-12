@@ -13,8 +13,12 @@ import static javaapplication3.BancoReg.bancoReg;
  */
 public class WO {
     public boolean exec(String[] procop, int res){
+        System.out.println("AAA"+res);
+        System.out.println("BBB"+procop[1]);
+        
         if(procop[1].contains("R")){
             procop[1] = procop[1].replace("R", "");
+            
             bancoReg.get(getInt(procop[1])).setValor(res);
             return true;
         }     

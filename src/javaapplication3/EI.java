@@ -26,6 +26,7 @@ public class EI {
                         }
                             
             }*/
+        System.out.println("tamanho do vals" + vals.length);
         if (vals.length == 1){
             return ula.solv(op, vals[0]);
         }else{

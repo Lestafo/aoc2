@@ -198,10 +198,10 @@ public class NewJFrame extends javax.swing.JFrame {
         }
         MemLista.setListData(arr);
         cpu.Ciclo();
-        Reg1.setText(Integer.toString(cpu.getReg(0)));
-        Reg2.setText(Integer.toString(cpu.getReg(1)));
-        Reg3.setText(Integer.toString(cpu.getReg(2)));
-        Reg4.setText(Integer.toString(cpu.getReg(3)));
+        Reg1.setText(Integer.toString(BancoReg.bancoReg.get(0).valor));
+        Reg2.setText(Integer.toString(BancoReg.bancoReg.get(1).valor));
+        Reg3.setText(Integer.toString(BancoReg.bancoReg.get(2).valor));
+        Reg4.setText(Integer.toString(BancoReg.bancoReg.get(3).valor));
         System.out.println("Terminei");
         
     }//GEN-LAST:event_ButaoActionPerformed
