@@ -10,28 +10,26 @@ import java.util.Random;
  * @author Lest
  */
 public class Cpu implements Runnable {
-    int cache;
-    char stat;
-    int add;
+    Cache cache = new Cache();
+    
 
     public Cpu() {
     }
 
-    public Cpu(int cache, int add) {
-        this.cache = cache;
-        this.add = add;
-        this.stat = 'I';
-    }
+    
     
     
     @Override
     public void run() {
         Random r1 = new Random();
         if(r1.nextInt() %5 == 2){
-            this.cache++;
-            this.stat = 'M';
+            this.cache.cu++;
         }
     
+    }
+    public void read(){
+        Random r2 = new Random();
+        
     }
     
     

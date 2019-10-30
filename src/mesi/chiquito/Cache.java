@@ -9,6 +9,8 @@ package mesi.chiquito;
  *
  * @author Lest
  */
-public class Memorio {
-    public static int[] kukka = new int[3];
+public class Cache {
+    int cu;
+    char stat;
+    int add;
 }
