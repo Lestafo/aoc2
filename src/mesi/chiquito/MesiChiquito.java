@@ -16,6 +16,7 @@ public class MesiChiquito {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        System.out.println("Mano eu to com muito");
     }
     
 }
