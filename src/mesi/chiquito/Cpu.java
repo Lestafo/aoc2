@@ -26,6 +26,7 @@ public class Cpu implements Runnable {
         if(r1.nextInt() %5 == 2){
             this.cache.cuia++;
         }
+        
     
     }
     public void read(){

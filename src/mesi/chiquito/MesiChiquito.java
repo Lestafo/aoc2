@@ -26,14 +26,21 @@ public class MesiChiquito {
         System.out.println("Mano eu to com muito");
     }
     
-    public static void alt(Cache cache){
+    public static void altRead(Cache cache){ /**
+     * 
+     * vai fazer as tigrada lá do read
+     */
         ArrayList<Cache> arr = new ArrayList();
         arr.add(cache1);
         arr.add(cache2);
         arr.add(cache3);
-        
+        char cachePrevSit = cache.stat; //situacao prévia da chave
         for(Cache r : arr){
-            if(cache.cuia == r.cuia && cache.addr == r.addr){
+            if(cache.addr != r.addr)
+                cache.stat = 'E';
+            else
+                cache.stat = cachePrevSit;
+            if(cache.cuia == r.cuia && cache.addr == r.addr && !cache.equals(r)){
                 cache.stat = 'S';
                 r.stat = 'S';
             }
