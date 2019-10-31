@@ -10,7 +10,13 @@ package mesi.chiquito;
  * @author Lest
  */
 public class Cache {
-    int cu;
+    int cuia;
     char stat;
-    int add;
+    int addr;
+    
+    void save(){
+        
+        //Mesichiquito.alt(this/);
+    }
+    
 }

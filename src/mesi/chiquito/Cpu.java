@@ -10,10 +10,11 @@ import java.util.Random;
  * @author Lest
  */
 public class Cpu implements Runnable {
-    Cache cache = new Cache();
+    Cache cache;
     
 
-    public Cpu() {
+    public Cpu(Cache cache) {
+        this.cache = cache;
     }
 
     
@@ -23,7 +24,7 @@ public class Cpu implements Runnable {
     public void run() {
         Random r1 = new Random();
         if(r1.nextInt() %5 == 2){
-            this.cache.cu++;
+            this.cache.cuia++;
         }
     
     }
