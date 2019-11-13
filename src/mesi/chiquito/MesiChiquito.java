@@ -6,48 +6,57 @@
 package mesi.chiquito;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
  * @author Lest
  */
-public class MesiChiquito {
+public class MesiChiquito implements Runnable {
 
-    static Cache cache1 = new Cache();
-    static Cache cache2 = new Cache();
-    static Cache cache3 = new Cache();
+    Cache cache1;
+    Cache cache2;
+    Cache cache3;
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        altWrite(cache1, 0, 10);
-        //altWrite(cache1, 0, 0);
-        //altRead(cache2, 0);
-        //altWrite(cache2, 0, 9);
-        System.out.println(cache1.cuia + " " + cache1.stat);
-        
-        
-        //System.out.println("Mano eu to com muito");
-    }
+   /* public static void main(String[] args){
+        runa();
+        runa();
+        runa();
+        System.out.println("Status > " + cache1.stat + " Addr > " + cache1.addr);
+        System.out.println("Status > " + cache2.stat + " Addr > " + cache2.addr);
+        System.out.println("Status > " + cache3.stat + " Addr > " + cache3.addr);
+    }*/
     
-    public static void altRead(Cache cache, int addr){ /**
-     * 
-     * vai fazer as tigrada lá do read
-     */
+    
+    public MesiChiquito(Cache cache1, Cache cache2, Cache cache3){
+        this.cache1 = cache1;
+        this.cache2 = cache2;
+        this.cache3 = cache3;
+    }
+
+    
+
+    public void altRead(Cache cache, int addr) {
+        /**
+         *
+         * vai fazer as tigrada lá do read
+         */
         ArrayList<Cache> arr = new ArrayList();
         arr.add(cache1);
         arr.add(cache2);
         arr.add(cache3);
-        char cachePrevSit = cache.stat; //situacao prévia da chave
+        //char cachePrevSit = cache.stat; //situacao prévia da chave
         int mam = 0;
         cache.addr = addr;
         for(Cache r : arr){
             if(!r.equals(cache)){
-                if(cache.addr != r.addr){
+                /*if(cache.addr != r.addr){
                     cache.stat = 'E';     
                     cache.cuia = Memorio.kukka[addr];
                     mam++;
-                }
+                }*/
                 if(cache.addr == r.addr && r.stat == 'E'){
                     cache.stat = 'S';
                     r.stat = 'S';
@@ -67,7 +76,7 @@ public class MesiChiquito {
                             mam++;
                         }
                 
-            
+                
             }   
         }
         if(mam == 0){
@@ -75,13 +84,13 @@ public class MesiChiquito {
             cache.cuia = Memorio.kukka[addr];
         }
     }
-    public static void altWrite(Cache cache, int addr, int valor){
+    public void altWrite(Cache cache, int addr, int valor){
         ArrayList<Cache> arr = new ArrayList();
         arr.add(cache1);
         arr.add(cache2);
         arr.add(cache3);
         cache.addr = addr;
-        char cachePrevSit = cache.stat; //situacao prévia da chave
+       // char cachePrevSit = cache.stat; //situacao prévia da chave
         int mam = 0;
         for(Cache r : arr){
             if (!r.equals(cache)){
@@ -120,4 +129,66 @@ public class MesiChiquito {
             cache.cuia = valor;
         }
     }
+
+  @Override
+    public void run() {
+        Random r1 = new Random();
+        Random r2 = new Random();
+        Cache current = cache1;
+        switch (r1.nextInt() %3){
+            case 0:
+                current = cache1;
+            break;
+            case 1:
+                current = cache2;
+            break;
+            case 2:
+                current = cache3;
+            break;
+        }
+        int ran = r2.nextInt();
+        int rin = r2.nextInt() %3;
+        rin = Math.abs(rin);
+        ran = Math.abs(ran);
+        System.out.println(ran%3);
+        System.out.println("RIN > " + rin);
+        if(ran % 3 == 0){
+            altRead(current, rin);
+            
+        }else if(ran % 3 == 1){
+            altWrite(current, rin, ran);
+        }return;
+        
+    }
+
+   /*// @Override
+    public static void runa() {
+        Random r1 = new Random();
+        Random r2 = new Random();
+        Cache current = cache1;
+        switch (r1.nextInt() %3){
+            case 0:
+                current = cache1;
+            break;
+            case 1:
+                current = cache2;
+            break;
+            case 2:
+                current = cache3;
+            break;
+        }
+        int ran = r2.nextInt();
+        int rin = r2.nextInt() %3;
+        rin = Math.abs(rin);
+        ran = Math.abs(ran);
+        System.out.println(ran%3);
+        System.out.println("RIN > " + rin);
+        if(ran % 3 == 0){
+            altRead(current, rin);
+            
+        }else if(ran % 3 == 1){
+            altWrite(current, rin, ran);
+        }return;
+        
+    }*/
 }

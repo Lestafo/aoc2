@@ -10,5 +10,5 @@ package mesi.chiquito;
  * @author Lest
  */
 public class Memorio {
-    public static int[] kukka = new int[3];
+    public static int[] kukka = {0,0,0};
 }
