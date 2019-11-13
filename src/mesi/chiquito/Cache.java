@@ -11,12 +11,12 @@ package mesi.chiquito;
  */
 public class Cache {
     int cuia;
-    char stat;
-    int addr;
+    char stat = 'I';
+    int addr = -1;
     
-    void save(){
+    /*void save(){
         
         //Mesichiquito.alt(this/);
-    }
+    }*/
     
 }
